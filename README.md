@@ -6,4 +6,4 @@ The settings are saved into `$HOME\apps\Wacom\Settings-Backup` which is a bit of
 
 Backup by running `Backup-WacomSettings` in PowerShell.
 
-Restore by running `Restore-WacomSettings` in PowerShell. A restore requires Administrator rights to you will have to allow that.
+Restore by running `Restore-WacomSettings` in PowerShell. A restore requires Administrator rights so you will have to allow that.

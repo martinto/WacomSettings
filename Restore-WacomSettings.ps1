@@ -7,7 +7,11 @@ if ([string]::IsNullOrEmpty($MyHome)) {
     $MyHome = "$env:HOME"
 }
 
-$path = "${MyHome}\apps\Wacom\Settings-Backup"
+if ([string]::IsNullOrEmpty($MyHome)) {
+    Write-Output "Home directory not set."
+}
+
+$path = Join-Path -Path $MyHome -ChildPath "apps\Wacom\Settings-Backup"
 If (!(test-path "$path"))
 {
       Write-Error "The directory for the settings ${path} doesn't exist."

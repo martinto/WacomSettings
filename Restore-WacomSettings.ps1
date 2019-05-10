@@ -3,6 +3,10 @@ param(
     [string]
     $MyHome
 )
+
+$MyHome = $MyHome -replace """","" -replace "`r","" -replace "`n",""
+$MyHome = $MyHome.Trim()
+
 if ([string]::IsNullOrEmpty($MyHome)) {
     $MyHome = "$env:HOME"
 }
@@ -12,11 +16,11 @@ if ([string]::IsNullOrEmpty($MyHome)) {
 }
 
 $path = Join-Path -Path $MyHome -ChildPath "apps\Wacom\Settings-Backup"
-If (!(test-path "$path"))
+If (!(Test-Path $path))
 {
-      Write-Error "The directory for the settings ${path} doesn't exist."
-      Pause
-      Exit 1
+    Write-Error "The directory for the settings ""${path}"" doesn't exist."
+    Pause
+    Exit 1
 }
 
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
